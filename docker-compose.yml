@@ -1,0 +1,30 @@
+version: "3"
+services:
+  app-nginx:
+    build:
+      context: ./App/docker
+      dockerfile: App/docker/nginx.docker
+    volumes:
+      - ./App:/app
+    depends_on:
+      - app-php-fpm
+    ports:
+      - "80:8080"
+  app-php-fpm:
+    build:
+      context: ./App/docker
+      dockerfile: App/docker/php-fpm.docker
+    volumes:
+      - ./App:/app
+  app-php-cli:
+    build:
+      context: ./App/docker
+      dockerfile: App/docker/php-cli.docker
+    environment:
+      APP_DEBUG: 1
+    volumes:
+      - ./App:/app
+      - composer:/root/.composer/cache
+
+volumes:
+  composer:
