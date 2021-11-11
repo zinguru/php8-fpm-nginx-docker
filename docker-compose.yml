@@ -3,7 +3,7 @@ services:
   app-nginx:
     build:
       context: ./App/docker
-      dockerfile: App/docker/nginx.docker
+      dockerfile: nginx.docker
     volumes:
       - ./App:/app
     depends_on:
@@ -13,13 +13,13 @@ services:
   app-php-fpm:
     build:
       context: ./App/docker
-      dockerfile: App/docker/php-fpm.docker
+      dockerfile: php-fpm.docker
     volumes:
       - ./App:/app
   app-php-cli:
     build:
       context: ./App/docker
-      dockerfile: App/docker/php-cli.docker
+      dockerfile: php-cli.docker
     environment:
       APP_DEBUG: 1
     volumes:
