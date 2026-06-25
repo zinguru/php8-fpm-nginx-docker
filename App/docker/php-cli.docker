@@ -1,13 +1,11 @@
-FROM php:8.0-cli
+FROM php:8.1-cli
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir/bin --filename=composer --quiet
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
-    install-php-extensions http
-
-RUN chmod +x /usr/local/bin/install-php-extensions && sync && \
+    install-php-extensions http && \
     install-php-extensions zip
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
