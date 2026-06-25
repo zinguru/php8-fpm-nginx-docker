@@ -17,4 +17,4 @@ init:
 	docker compose run --rm php-cli composer install
 
 php-bash:
-	docker composer run --rm php-cli /bin/bash
+	docker compose run --rm php-cli /bin/bash
