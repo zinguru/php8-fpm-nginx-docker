@@ -25,11 +25,10 @@ services:
       - ./App:/app
       - composer:/root/.composer/cache
 
-  postgres:
+  postgresql:
     image: postgres:16
     ports:
       - ${POSTGRES_PORT}:5432
-    container_name: ${POSTGRES_CONTAINER_NAME}
     working_dir: /app
     restart: always
     environment:
